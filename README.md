@@ -1,0 +1,436 @@
+[INVITACION.html](https://github.com/user-attachments/files/25130362/INVITACION.html)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeria XV - The Golden Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --gold: #C5A059;
+            --dark: #0a0a0a;
+            --accent: #ffffff;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--accent);
+            overflow-x: hidden;
+        }
+        .font-luxury { font-family: 'Bodoni Moda', serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .gold-border {
+            border: 1px solid var(--gold);
+        }
+
+        .btn-luxury {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid var(--gold);
+        }
+        .btn-luxury:hover {
+            background-color: var(--gold);
+            color: black;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* Líneas de cancha sutiles como decoración */
+        .court-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); }
+
+        .image-placeholder {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Carga / Intro -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-black flex items-center justify-center">
+        <div class="text-center">
+            <h2 class="font-luxury text-gold text-4xl mb-2 animate-pulse tracking-[0.5em]">VALERIA</h2>
+            <div class="w-48 h-[1px] bg-gold mx-auto overflow-hidden">
+                <div id="loader-bar" class="w-full h-full bg-white -translate-x-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section Cinematográfico -->
+    <section class="relative h-screen w-full flex flex-col justify-end items-center pb-20 overflow-hidden">
+        <!-- Background con Parallax simulado -->
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full image-placeholder">
+                <span class="text-xs uppercase tracking-[1em] text-gold/50"><img src= "C:\Users\monts\Downloads\gala1.jpeg" alt="Valeria" class="w-full h-auto rounded-sm"></span>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <p class="font-luxury italic text-xl md:text-2xl text-gold mb-4 reveal">THE GOLDEN SEASON</p>
+            <h1 class="font-display text-7xl md:text-[10rem] font-black leading-none mb-4 reveal">VALERIA</h1>
+            <div class="flex items-center justify-center gap-4 reveal">
+                <span class="h-[1px] w-12 bg-gold"></span>
+                <p class="uppercase tracking-[0.5em] text-sm font-light">Mis Quince Años</p>
+                <span class="h-[1px] w-12 bg-gold"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Agradecimiento Elegante -->
+    <section class="py-32 px-6 relative overflow-hidden">
+        <div class="court-lines -right-1/4 top-0 w-[600px] h-[600px]"></div>
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <p class="font-luxury text-3xl md:text-5xl italic leading-tight reveal">
+                "La vida es un juego de pasión y elegancia. Hoy celebro mi mejor anotación rodeada de las personas que más amo."
+            </p>
+            <div class="mt-12 h-20 w-[1px] bg-gold mx-auto reveal"></div>
+        </div>
+    </section>
+
+    <!-- Contador de Tiempo Moderno -->
+    <section class="py-20 border-y border-gold/20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="font-display text-5xl md:text-7xl mb-20 text-center reveal tracking-tighter italic">Falta poco para el encuentro</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <span id="days" class="block text-6xl md:text-8xl font-display font-bold">00</span>
+                    <span class="text-gold uppercase tracking-widest text-xs">Días</span>
+                </div>
+                <div class="text-center reveal">
+                    <span id="hours" class="block text-6xl md:text-8xl font-display font-bold">00</span>
+                    <span class="text-gold uppercase tracking-widest text-xs">Horas</span>
+                </div>
+                <div class="text-center reveal">
+                    <span id="minutes" class="block text-6xl md:text-8xl font-display font-bold">00</span>
+                    <span class="text-gold uppercase tracking-widest text-xs">Minutos</span>
+                </div>
+                <div class="text-center reveal">
+                    <span id="seconds" class="block text-6xl md:text-8xl font-display font-bold text-gold">00</span>
+                    <span class="text-gold uppercase tracking-widest text-xs">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- La Corte de Honor (Padres y Padrinos) -->
+    <section class="py-32 px-6 bg-black text-white"> <div class="max-w-5xl mx-auto text-center"> <div class="grid md:grid-cols-2 gap-16 md:gap-24">
+            
+            <div class="reveal group">
+                <h3 class="font-luxury text-gold/70 text-[10px] md:text-xs tracking-[0.5em] mb-12 uppercase italic relative inline-block">
+                    En compañía de mis padres
+                    <span class="absolute -bottom-4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent"></span>
+                </h3>
+                <div class="space-y-6 transition-all duration-500 group-hover:scale-105">
+                    <p class="text-3xl md:text-4xl font-display tracking-wide hover:text-gold transition-colors duration-300">
+                        Dora Maria Ruiz Ramón
+                    </p>
+                    <p class="text-3xl md:text-4xl font-display tracking-wide hover:text-gold transition-colors duration-300">
+                        Antonio Jiménez Reyna
+                    </p>
+                </div>
+            </div>
+
+            <div class="reveal group">
+                <h3 class="font-luxury text-gold/70 text-[10px] md:text-xs tracking-[0.5em] mb-12 uppercase italic relative inline-block">
+                    Mis Padrinos
+                    <span class="absolute -bottom-4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent"></span>
+                </h3>
+                <div class="space-y-6 transition-all duration-500 group-hover:scale-105">
+                    <p class="text-3xl md:text-4xl font-display tracking-wide hover:text-gold transition-colors duration-300">
+                        Reyna Ruiz Ramón
+                    </p>
+                    <p class="text-3xl md:text-4xl font-display tracking-wide hover:text-gold transition-colors duration-300">
+                        Ing. Arturo Jiménez Reyna
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilo adicional para el color Gold si no lo tienes definido */
+    .text-gold {
+        color: #d4af37; /* Un dorado clásico y elegante */
+    }
+    .font-display {
+        font-family: 'Playfair Display', serif; /* O la fuente elegante que estés usando */
+        font-weight: 300;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+  .full-screen-swiper {
+    width: 100%;
+    height: 90vh; /* Ocupa casi toda la pantalla */
+    margin-bottom: 2rem;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto hace que luzca como foto de portada */
+    object-position: center top; /* Enfoca la parte superior/centro (tu rostro) */
+  }
+  .overlay-text {
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  }
+</style>
+<section class="relative">
+    <div class="swiper swiperGala full-screen-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\gala1.jpeg" alt="Sesión Gala 1"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\gala2.jpeg" alt="Sesión Gala 2"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\gala3.jpeg" alt="Sesión Gala 3"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\gala4.jpeg" alt="Sesión Gala 4"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\gala5.jpeg" alt="Sesión Gala 5"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\gala6.jpeg" alt="Sesión Gala 6"></div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-10 z-10 overlay-text text-center">
+            <h2 class="text-white text-3xl uppercase tracking-[0.8em] font-light">Glamour Edition</h2>
+            <p class="text-gold/80 text-xs uppercase tracking-widest mt-2">Elegancia y Brillo</p>
+        </div>
+    </div>
+</section>
+
+<section class="relative">
+    <div class="swiper swiperAthletic full-screen-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\depor1.jpeg" alt="Sesión Atletica 1"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\depor2.jpeg" alt="Sesión Atletica 2"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\depor3.jpeg" alt="Sesión Atletica 3"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\depor4.jpeg" alt="Sesión Atletica 4"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\depor5.jpeg" alt="Sesión Atletica 5"></div>
+            <div class="swiper-slide"><img src="C:\Users\monts\Downloads\depor6.jpeg" alt="Sesión Atletica 6"></div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-10 z-10 overlay-text text-center">
+            <h2 class="text-white text-3xl uppercase tracking-[0.8em] font-light">Athletic Soul</h2>
+            <p class="text-white/60 text-xs uppercase tracking-widest mt-2">Fuerza y Movimiento</p>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiperOptions = {
+    loop: true,
+    effect: "fade", // Efecto de desvanecimiento suave
+    autoplay: {
+      delay: 3000, // 3 segundos
+      disableOnInteraction: false,
+    },
+    speed: 1500, // La transición dura 1.5 seg para ser elegante
+  };
+
+  // Inicializar ambos
+  new Swiper(".swiperGala", swiperOptions);
+  new Swiper(".swiperAthletic", swiperOptions);
+</script>
+
+    <!-- Itinerario de Gala -->
+    <section class="py-32 bg-[#0d0d0d]">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="font-display text-5xl md:text-7xl mb-20 text-center reveal tracking-tighter italic">The Event</h2>
+            
+            <div class="grid md:grid-cols-2 gap-px bg-gold/20">
+                <!-- Misa -->
+                <div class="bg-[#0d0d0d] p-16 text-center reveal">
+                    <p class="text-gold mb-6 uppercase tracking-[0.3em] text-xs">Ceremonia Religiosa</p>
+                    <h4 class="font-display text-4xl mb-4 italic">Misa de celebracion</h4>
+                    <p class="text-gray-400 font-light mb-8 max-w-xs mx-auto italic">Parroquia Sagrado Corazon de Jesus - 17:00 hrs</p>
+                    <a href="https://maps.app.goo.gl/h4LCn7GxdTfCd82x8" class="btn-luxury px-10 py-4 text-xs tracking-widest uppercase">Obtener Dirección</a>
+                </div>
+                <!-- Recepción -->
+                <div class="bg-[#0d0d0d] p-16 text-center reveal">
+                    <p class="text-gold mb-6 uppercase tracking-[0.3em] text-xs">Recepción de Gala</p>
+                    <h4 class="font-display text-4xl mb-4 italic">Recepcion</h4>
+                    <p class="text-gray-400 font-light mb-8 max-w-xs mx-auto italic">Salon de eventos Coqui - 19:00 hrs</p>
+                    <a href="https://maps.app.goo.gl/qr7uTZQhiiutPcYx7" class="btn-luxury px-10 py-4 text-xs tracking-widest uppercase">Obtener Dirección</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Código de Etiqueta y Regalos -->
+    <section class="py-32 px-6">
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 border-l border-gold/30 pl-10">
+            <div class="reveal">
+                <h5 class="text-gold uppercase tracking-[0.4em] text-xs mb-4">Dress Code</h5>
+                <p class="font-display text-3xl mb-2 italic">Gala Formal</p>
+                <p class="text-gray-500 text-sm italic font-light">Vístete para impresionar. Favor de reservar el color verde esmeralda para la quinceañera.</p>
+            </div>
+            <div class="reveal">
+                <h5 class="text-gold uppercase tracking-[0.4em] text-xs mb-4">Gifting</h5>
+                <p class="font-display text-3xl mb-2 italic">Lluvia de Sobres</p>
+                <p class="text-gray-500 text-sm italic font-light">Su presencia es el mejor regalo. Si desea obsequiar algo, agradeceremos sea en efectivo mediante sobre.</p>
+            </div>
+        </div>
+    </section>
+
+<section class="py-32 bg-white text-black">
+    <div class="max-w-xl mx-auto px-6 text-center">
+        <div class="mb-12 reveal">
+            <h5 class="uppercase tracking-[0.5em] text-xs text-gray-400 mb-6">Información de Entrada</h5>
+            <p class="text-sm uppercase font-bold tracking-widest mb-2">Este pase es exclusivo para:</p>
+            <div class="text-6xl font-display border-y border-black py-4 my-6">2 PERSONAS</div>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-red-600 font-black">Invitación Personal e Intransferible</p>
+            <p class="mt-8 text-xs uppercase tracking-widest text-gray-500">
+                Favor de confirmar antes del <span class="font-bold text-black">01 de Marzo</span>
+            </p>
+        </div>
+
+        <div class="reveal mt-20">
+            <h3 class="font-display text-4xl mb-10 italic">Confirmar Asistencia</h3>
+            <form id="rsvpForm" class="text-left space-y-8">
+                <div class="relative">
+                    <input type="text" id="guestName" placeholder="Tu Nombre Completo" required class="w-full border-b-2 border-gray-200 py-3 focus:border-gold outline-none transition-all placeholder:text-gray-300">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <label class="cursor-pointer">
+                        <input type="radio" name="attendance" value="Asistiré" class="hidden peer" checked onchange="toggleAcompanante(true)">
+                        <div class="border border-black py-4 text-center text-xs tracking-widest uppercase transition-all peer-checked:bg-black peer-checked:text-white hover:bg-gray-100">
+                            Asistiré
+                        </div>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="radio" name="attendance" value="No podré" class="hidden peer" onchange="toggleAcompanante(false)">
+                        <div class="border border-black py-4 text-center text-xs tracking-widest uppercase transition-all peer-checked:bg-black peer-checked:text-white hover:bg-gray-100">
+                            No podré
+                        </div>
+                    </label>
+                </div>
+
+                <div id="wrapperAcompanante" class="relative transition-all duration-500 overflow-hidden">
+                    <input type="text" id="companionName" placeholder="Nombre de tu acompañante" class="w-full border-b-2 border-gray-200 py-3 focus:border-gold outline-none transition-all placeholder:text-gray-300">
+                </div>
+
+                <textarea id="guestMessage" placeholder="Mensaje para la quinceañera" class="w-full border-b-2 border-gray-200 py-3 focus:border-gold outline-none transition-all placeholder:text-gray-300"></textarea>
+                
+                <button type="submit" class="w-full bg-black text-white py-6 text-xs tracking-[0.4em] uppercase hover:bg-gold transition-all">
+                    Enviar Confirmación por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+// Función para mostrar/ocultar el campo de acompañante
+function toggleAcompanante(show) {
+    const wrapper = document.getElementById('wrapperAcompanante');
+    if (show) {
+        wrapper.style.maxHeight = "100px";
+        wrapper.style.opacity = "1";
+        wrapper.style.marginTop = "20px";
+    } else {
+        wrapper.style.maxHeight = "0px";
+        wrapper.style.opacity = "0";
+        wrapper.style.marginTop = "0px";
+        document.getElementById('companionName').value = ""; // Limpia el nombre si pone que no va
+    }
+}
+
+document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('guestName').value;
+    const asistencia = document.querySelector('input[name="attendance"]:checked').value;
+    const acompanante = document.getElementById('companionName').value;
+    const mensaje = document.getElementById('guestMessage').value;
+    const miNumero = "529212406252";
+
+    // Construcción del mensaje de WhatsApp con formato bonito
+    let texto = `*CONFIRMACIÓN XV AÑOS* 👑\n\n`;
+    texto += `👤 *Invitado:* ${nombre}\n`;
+    texto += `✅ *Asistencia:* ${asistencia}\n`;
+    
+    if (asistencia === "Asistiré" && acompanante) {
+        texto += `👫 *Acompañante:* ${acompanante}\n`;
+    }
+    
+    if (mensaje) {
+        texto += `\n✉️ *Mensaje:* _${mensaje}_`;
+    }
+
+    const url = `https://wa.me/${miNumero}?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+});
+</script>
+
+    <footer class="py-20 bg-black text-center">
+        <p class="font-luxury text-gold text-2xl mb-4 italic">XV Años Valeria Jiménez Ruiz</p>
+        <p class="text-gray-600 text-[10px] tracking-[0.5em] uppercase">Built for the legends</p>
+    </footer>
+
+    <script>
+        // Simulación de carga
+        window.addEventListener('load', () => {
+            gsap.to("#loader-bar", { x: 0, duration: 1.5, ease: "power2.inOut" });
+            gsap.to("#loader", { y: "-100%", delay: 1.8, duration: 1, ease: "expo.inOut" });
+            
+            // Animaciones al hacer scroll
+            gsap.utils.toArray(".reveal").forEach(elem => {
+                gsap.to(elem, {
+                    scrollTrigger: elem,
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    stagger: 0.2
+                });
+            });
+        });
+
+        // Countdown Logic
+        const targetDate = new Date("March 7, 2026 17:00:00").getTime();
+        function updateCounter() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d < 10 ? '0'+d : d;
+            document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
+            document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
+            document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+    </script>
+</body>
+</html>
